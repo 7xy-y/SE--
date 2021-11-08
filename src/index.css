@@ -20,8 +20,9 @@ code {
   bottom: 0;
   right: 0;
   /* background-image: url('/sxt_exam/lqw/images/login-bg-small.jpg'); */
-  background-image: url('./resources/login-bg-small.jpg');
-  background-size: cover;
+  background-image: url('./resources/preview.jpg');
+  background-size: auto;
+
   min-height: 580px;
   min-width: 800px
 }
