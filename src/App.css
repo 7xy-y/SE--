@@ -8,7 +8,8 @@
   background: rgba(255, 255, 255, 0.2);
 }
 .site-layout .site-layout-background {
-  background: #fff;
+  background: rgb(117, 29, 29);
+  color:#00d8ff
 }
 
 .App-logo {

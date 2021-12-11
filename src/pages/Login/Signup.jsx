@@ -8,18 +8,19 @@ import Password from 'antd/lib/input/Password';
 function App() {
 
   const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
+    labelCol: { span: 10 },
+    wrapperCol: { span: 14 },
+    margin:"auto",
   };
 
   const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { offset: 11, span: 13 },
   };
 
   const transformFormData = (obj) => {
     let formData = new FormData()
 
-    for (let k in obj) {
+    for (let k in obj) {  
         formData.append(k, obj[k])
         console.log(k,obj[k])
     }
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <div>
+      
     <Form
     {...layout}
     name="basic"
@@ -64,7 +66,22 @@ function App() {
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
   >
-    <Form.Item
+    <br/>
+    <br/><br/><br/><br/>
+    <br/><br/><br/><br/>
+    <br/><br/><br/><br/>
+    <br/>
+    <br/>
+    
+    <label style={{
+      marginLeft:"45%",
+      fontSize:"1.9em",
+    }}>
+      注册账号
+      </label>
+    <br/>
+    <br/>
+    <Form.Item    
       label="Username"
       name="username"
       rules={[{ required: true, message: 'Please input your username!' }]}

@@ -32,6 +32,8 @@ export default class LoginInterface extends Component {
         };
     }
 
+    
+
     onFinish = (values) => {
         /*
         if (this.state.type === 1) {
@@ -65,7 +67,8 @@ export default class LoginInterface extends Component {
                 }
                 else
                 {
-                this.props.history.push({pathname:'/TeacherCenter/TApplication' ,state:{username:naame,psw:passw}})
+                //history= this.props.history
+                this.props.history.push({pathname:'/UserCenter/Upone' ,state:{username:naame,psw:passw}})
                 alert(msg)
                 }
             }).catch(function(error) {

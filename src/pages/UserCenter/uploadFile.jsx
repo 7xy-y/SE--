@@ -44,7 +44,11 @@ var options = {
 }
 
 export default class UploadFile extends Component {
-    state = {
+
+  constructor(){
+    super()
+    this.state={
+      
         name: '',
         tag:'',
         bpath: '',
@@ -58,7 +62,24 @@ export default class UploadFile extends Component {
         showpreview:false,
         startTime:'1',
         frameStep:'1',
+
     }
+
+    console.log(this.props)
+}
+
+
+
+  componentWillMount(){
+    var id = this.props.location.state.username;
+   console.log(this.props)
+    this.setState({
+        username: id,
+    });
+
+    console.log(this.props)
+}
+    
 
     sendup1=()=>{
       this.setState({bpath:this.state.img1.props.src})
@@ -338,6 +359,7 @@ export default class UploadFile extends Component {
         } else if (/^video\/\S+$/.test(type)) {
 
             /*传单张image64*/
+            console.log('video here',file)
             this.setState({showpreview:true})
             src = URL.createObjectURL(file)
             preview = <video src={src} autoPlay loop controls />
@@ -495,10 +517,12 @@ export default class UploadFile extends Component {
         //此处的file字段由服务端的api决定，可以是其它值
         form.append('File', data);
         form.append('Tag',stag);
+        form.append('Username',this.state.username)
         console.log('aa:',form);
         axios.post(url,transformFormData({
             File:data,
             Tag:stag,
+            Username:this.state.username
         })).then((response) => {
             // get response
             console.log(response);
@@ -590,6 +614,7 @@ export default class UploadFile extends Component {
             </Form.Item>
         }
         <br/>
+        <Form.Item >
         {this.state.showpreview&&<Image.PreviewGroup>
             {img1}
             {img2}
@@ -598,6 +623,7 @@ export default class UploadFile extends Component {
             {img5}
         </Image.PreviewGroup>
          }
+         </Form.Item>
         {this.state.showpreview&&<Form.Item label="当前选择" {...formItemLayout}>
           <Image
             src={this.state.bpath}
@@ -605,7 +631,7 @@ export default class UploadFile extends Component {
         </Form.Item>
         }
         <Form.Item>
-          <Button onClick={this.upload} style={{ width: 200,left:650}} l  type="primary" shape="round" size='large'>
+          <Button onClick={this.upload} style={{ width: 200}} l  type="primary" shape="round" size='large'>
             上传任务
           </Button>
         </Form.Item>
